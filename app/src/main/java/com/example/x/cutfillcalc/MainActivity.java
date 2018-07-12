@@ -1,8 +1,10 @@
 package com.example.x.cutfillcalc;
 
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.EditText;
@@ -28,8 +30,6 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.onButto
     EditText columnsEditText;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
-    @BindView(R.id.test)
-    TextView test;
 
     private int rows;
     private int columns;
@@ -110,8 +110,11 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.onButto
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        DividerItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        decoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.divider));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+        recyclerView.addItemDecoration(decoration);
     }
 
     @Override

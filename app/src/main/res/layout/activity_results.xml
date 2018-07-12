@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     android:orientation="vertical"
     tools:context=".ResultsActivity">
 
@@ -11,12 +12,24 @@
         android:id="@+id/results_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textColor="@color/colorText"
         android:textSize="22sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@color/colorPrimaryDark" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="enter point : " />
+        android:layout_margin="16dp"
+        android:text="enter point : "
+        android:textColor="@color/colorText"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +39,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="X : " />
+            android:text="X : "
+            android:textColor="@color/colorText" />
 
         <EditText
             android:id="@+id/x_editText"
@@ -37,7 +51,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:text="Y : " />
+            android:text="Y : "
+            android:textColor="@color/colorText" />
 
         <EditText
             android:id="@+id/y_editText"
@@ -51,12 +66,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="get FL"
-        android:textAllCaps="false" />
+        android:layout_margin="16dp"
+        android:text="calculate FL"
+        android:textAllCaps="false"
+        android:textColor="@color/colorText" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@color/colorPrimaryDark" />
 
     <TextView
         android:id="@+id/final_result_textView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textColor="@color/colorText"
+        android:textSize="22sp" />
 
 </LinearLayout>

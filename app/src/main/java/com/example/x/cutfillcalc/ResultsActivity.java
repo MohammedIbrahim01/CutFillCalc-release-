@@ -3,7 +3,6 @@ package com.example.x.cutfillcalc;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -17,6 +16,7 @@ public class ResultsActivity extends AppCompatActivity {
     public static final String KEY_SNS = "key-sns";
     public static final String KEY_SWE = "key-swe";
     public static final String KEY_LEVELS = "key-levels";
+    public static final String KEY_FINAL_RESULT_CONTENT = "key-final-result-content";
 
     private float Swe;
     private float Sns;
@@ -42,16 +42,18 @@ public class ResultsActivity extends AppCompatActivity {
         y = Float.valueOf(yEditText.getText().toString());
 
         FL = FLOrigin + Swe * x + Sns * y;
-        finalResultTextView.setText("\n At Point (" + x + "," + y + ")  : " );
-        finalResultTextView.append("\n FL : " + FL);
+        finalResultTextView.setText("At Point (" + x + " , " + y + ") : \n\n" );
+        finalResultTextView.append("FL   : " + FL + " m");
         float height = 0;
         height = levels[(int)y-1][(int)x-1] - FL;
         String cutOrFill = "";
         if (height >= 0)
-            cutOrFill = "cut";
-        else
+            cutOrFill = "cut ";
+        else{
             cutOrFill = "fill";
-        finalResultTextView.append("\n " + cutOrFill + " : " + height);
+            height *= -1;
+        }
+        finalResultTextView.append("\n " + cutOrFill + " : " + height + " m");
     }
 
     @Override
@@ -59,6 +61,10 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
         ButterKnife.bind(this);
+
+        if (savedInstanceState != null) {
+            finalResultTextView.setText(savedInstanceState.getString(KEY_FINAL_RESULT_CONTENT));
+        }
 
         Intent intent = getIntent();
         if (intent.hasExtra(KEY_FL_ORIGIN)) {
@@ -68,9 +74,15 @@ public class ResultsActivity extends AppCompatActivity {
             levels = (float[][]) intent.getExtras().getSerializable(KEY_LEVELS);
         }
 
-        resultsTextView.append(" Swe : " + Swe);
-        resultsTextView.append("\n Sns : " + Sns);
-        resultsTextView.append("\n FL at origin : " + FLOrigin);
+        resultsTextView.setText("S w-e         : " + Swe + "  m/unit");
+        resultsTextView.append("\nS n-s          : " + Sns + "  m/unit");
+        resultsTextView.append("\nFL at (0,0) : " + FLOrigin + "  m");
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(KEY_FINAL_RESULT_CONTENT, finalResultTextView.getText().toString());
     }
 }

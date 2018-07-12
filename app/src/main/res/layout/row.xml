@@ -3,21 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="16dp"
+    android:background="#4DB6AC"
     android:orientation="horizontal">
 
     <EditText
         android:id="@+id/point_editText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="2" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/add_point_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginRight="32dp"
-        android:layout_weight="5"
+        android:layout_weight="1"
         android:text="add point" />
 
 </LinearLayout>
